@@ -13,7 +13,7 @@ My solutions for [Advent of Code 2025](https://adventofcode.com/2025) in Python.
 ## Running Solutions
 
 ```bash
-python solutions/day01.py
+python solutions/01.py
 ```
 
 ## Creating Files for a New Day
