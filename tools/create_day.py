@@ -12,7 +12,10 @@ def create_day_files(day):
         print(f"Error: Day must be between 1 and 12 (got {day})")
         return False
     
-    template = '''from tools import read_input, read_lines
+    template = '''import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
+from tools.readers import read_input, read_lines
 
 def parse_input(day):
     """Parse the input file for this day."""

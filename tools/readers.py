@@ -1,6 +1,6 @@
 def read_input(day):
     """Read raw input file."""
-    with open(f"input/{day:02d}.txt") as f:
+    with open(f"../input/{day:02d}.txt") as f:
         return f.read().strip()
 
 def read_lines(day):
