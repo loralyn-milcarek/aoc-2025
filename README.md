@@ -28,7 +28,7 @@ python create_day.py 5  # Creates files for day 5
 <!-- PROGRESS_TABLE_START -->
 | Day | Part 1 | Part 2 |
 |-----|--------|--------|
-| 01  | ✅ | ⬜ |
+| 01  | ✅ | ✅ |
 | 02  | ⬜ | ⬜ |
 | 03  | ⬜ | ⬜ |
 | 04  | ⬜ | ⬜ |

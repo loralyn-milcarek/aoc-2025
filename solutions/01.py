@@ -6,23 +6,46 @@ from tools.readers import read_input, read_lines
 def parse_input(day):
     return read_lines(day)
 
-def part1(data):
-    zeros = 0
-    start = 50
-    for line in data:
+def part1(instructions):
+    zero_count = 0
+    current_position = 50
+    for line in instructions:
         direction, move = line[0], int(line[1:][-2:])
 
         if direction == "L":
-            start = (start - move) % 100
+            current_position = (current_position - move) % 100
         else:
-            start = (start + move) % 100
-        zeros += (start == 0)
-    return zeros
+            current_position = (current_position + move) % 100
+        zero_count += (current_position == 0)
+    return zero_count
 
 def part2(data):
-    """Solve part 2."""
-    # TODO: Implement solution
-    pass
+    """
+    Count how many times position 0 is landed on or crossed on a circular dial numbered 0-99.
+    
+    Args:
+        List of strings containing direction (L or R) followed by distance to move.
+    
+    Returns:
+        Total number of times position 0 is encountered
+    """
+    zero_count = 0
+    current_position = 50
+
+    for line in data:
+        direction, revolutions, move = line[0], line[1:-2], int(line[1:][-2:])
+        move *= -1 if direction == "L" else 1
+        zero_count += int(revolutions) if revolutions else 0
+        target = current_position + move
+        if current_position != 0:
+            if (target < 0 and target > -100) or (target > 100 and target < 200):
+                zero_count += 1
+            if target <= -100 or target >= 200:
+                zero_count += target // 100
+        current_position = target % 100
+        zero_count += (current_position == 0)
+
+    return zero_count
 
 if __name__ == "__main__":
     day = 1
@@ -30,4 +53,4 @@ if __name__ == "__main__":
     
     print(f"Day {day}")
     print(f"Part 1: {part1(data)}")
-    # print(f"Part 2: {part2(data)}")
+    print(f"Part 2: {part2(data)}")
