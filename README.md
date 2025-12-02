@@ -29,7 +29,7 @@ python create_day.py 5  # Creates files for day 5
 | Day | Part 1 | Part 2 |
 |-----|--------|--------|
 | 01  | ✅ | ✅ |
-| 02  | ✅ | ⬜ |
+| 02  | ✅ | ✅ |
 | 03  | ⬜ | ⬜ |
 | 04  | ⬜ | ⬜ |
 | 05  | ⬜ | ⬜ |

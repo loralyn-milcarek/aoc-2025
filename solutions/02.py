@@ -8,7 +8,7 @@ def parse_input(day):
     lines = read_blocks(day, ",")
     return lines
 
-def find_invalid_ids(id_ranges):
+def find_invalid_doubled_ids(id_ranges):
     """
     Finds and sums all invalid IDs in given ranges.
     Invalid IDs are pairs of repeated digits (e.g. 11, 1010, 1188511885)
@@ -42,15 +42,33 @@ def find_invalid_ids(id_ranges):
 
 
 
-def part2(data):
-    """Solve part 2."""
-    # TODO: Implement solution
-    pass
+def find_invalid_repeated_ids(id_ranges):
+    invalid_ids = []
+
+    for id_range in id_ranges:
+        start, end = id_range.split("-")
+
+        for id in range(int(start), int(end) + 1):
+            id_string = str(id)
+            id_length = len(id_string)
+
+            for pattern_length in range(1, (id_length // 2) + 1):
+                if id_length % pattern_length != 0:
+                    continue
+                
+                repeat = id_length // pattern_length
+                pattern = id_string[:pattern_length]
+
+                if pattern * repeat == id_string:
+                    invalid_ids.append(int(id))
+                    break
+
+    return sum(invalid_ids)
 
 if __name__ == "__main__":
     day = 2
     data = parse_input(day)
-    
+
     print(f"Day {day}")
-    print(f"Part 1: {find_invalid_ids(data)}")
-    print(f"Part 2: {part2(data)}")
+    print(f"Part 1: {find_invalid_doubled_ids(data)}")
+    print(f"Part 2: {find_invalid_repeated_ids(data)}")
