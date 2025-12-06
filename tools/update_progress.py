@@ -10,12 +10,10 @@ def check_solution(day):
     with open(filepath) as f:
         content = f.read()
     
-    # Check if parts are implemented (not just "pass" or containing TODO)
-    part1_match = re.search(r"def part1[^:]*:.*?(?=def |\Z)", content, re.DOTALL)
-    part1_done = part1_match and "TODO" not in part1_match.group(0)
+    # Check if parts have been completed
+    part1_done = "def part1" not in content
+    part2_done = "def part2" not in content
     
-    part2_match = re.search(r"def part2[^:]*:.*?(?=def |\Z)", content, re.DOTALL)
-    part2_done = part2_match and "TODO" not in part2_match.group(0)
     part1_status = "✅" if part1_done else "⬜"
     part2_status = "✅" if part2_done else "⬜"
     

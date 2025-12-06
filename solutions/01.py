@@ -6,7 +6,7 @@ from tools.readers import read_input, read_lines
 def parse_input(day):
     return read_lines(day)
 
-def part1(instructions):
+def count_zeros(instructions):
     zero_count = 0
     current_position = 50
     for line in instructions:
@@ -19,7 +19,7 @@ def part1(instructions):
         zero_count += (current_position == 0)
     return zero_count
 
-def part2(data):
+def count_zeros_passed(data):
     """
     Count how many times position 0 is landed on or crossed on a circular dial numbered 0-99.
     
@@ -52,5 +52,5 @@ if __name__ == "__main__":
     data = parse_input(day)
     
     print(f"Day {day}")
-    print(f"Part 1: {part1(data)}")
-    print(f"Part 2: {part2(data)}")
+    print(f"Part 1: {count_zeros(data)}")
+    print(f"Part 2: {count_zeros_passed(data)}")
